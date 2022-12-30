@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import ErrorPage from './pages/ErrorPage';
+import OrderPage from './pages/OrderPage';
 import SectionsPage from './pages/SectionsPage';
 import SettingsPage from './pages/SettingsPage';
 
@@ -242,6 +243,10 @@ const router = createBrowserRouter([
       {
         path: '/sections',
         element: <SectionsPage sections={sections} />,
+      },
+      {
+        path: '/orders',
+        element: <OrderPage />,
       },
       {
         path: '/settings',

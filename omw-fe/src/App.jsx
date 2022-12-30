@@ -9,8 +9,8 @@ const navItems = [
   },
   {
     id: 1,
-    icon: 'uil:user',
-    route: '/profile',
+    icon: 'uil:users-alt',
+    route: '/workers',
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const navItems = [
   {
     id: 3,
     icon: 'uil:truck',
-    route: '/delivery',
+    route: '/orders',
   },
   {
     id: 4,
