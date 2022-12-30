@@ -6,6 +6,7 @@ export default function SectionList({ sections, activeId, setActiveId }) {
     <>
       <h2 className="text-xl font-bold">List of sections</h2>
       <div className="overflow-auto">
+      <div className="overflow-auto px-2">
         {sections.map(({ id, name, used, received, sent, expected }) => (
           <div
             key={id}
@@ -24,6 +25,7 @@ export default function SectionList({ sections, activeId, setActiveId }) {
             <div>{expected} expected</div>
           </div>
         ))}
+      </div>
       </div>
     </>
   );

@@ -8,6 +8,7 @@ export default function Navigation({ navItems }) {
   return (
     <>
       <div className="shadow-xl w-20 flex flex-col items-center justify-center h-full bg-slate-200 gap-4">
+      <div className="w-20 flex flex-col items-center justify-center h-full bg-slate-200 gap-4">
         {navItems.map(({ id, icon, route }) => (
           <Link key={id} to={route}>
             <div
@@ -25,6 +26,7 @@ export default function Navigation({ navItems }) {
             </div>
           </Link>
         ))}
+      </div>
       </div>
     </>
   );

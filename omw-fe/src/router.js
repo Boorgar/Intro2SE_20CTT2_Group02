@@ -4,6 +4,10 @@ import ErrorPage from './pages/ErrorPage';
 import OrderPage from './pages/OrderPage';
 import SectionsPage from './pages/SectionsPage';
 import SettingsPage from './pages/SettingsPage';
+import HomePage from './pages/HomePage';
+import StoragePage from './pages/StoragePage';
+import UnderConstructionPage from './pages/UnderConstructionPage';
+
 
 const sections = [
   {
@@ -242,15 +246,29 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/sections',
-        element: <SectionsPage sections={sections} />,
-      },
+            element: <SectionsPage sections={sections} />,
+            path: '/',
+            element: <HomePage />,
+        },
+        {
+            path: '/storage',
+            element: <StoragePage sections={sections} />,
+
+        },
+        {
+            path: '/notifications',
+            element: <UnderConstructionPage />,
+        },
+
       {
         path: '/orders',
         element: <OrderPage />,
       },
       {
         path: '/settings',
-        element: <SettingsPage />,
+          element: <SettingsPage />,
+          element: <UnderConstructionPage />,
+
       },
     ],
   },
