@@ -4,28 +4,24 @@ import { Progress } from 'antd';
 export default function SectionList({ sections, activeId, setActiveId }) {
   return (
     <>
-      <h2 className="text-xl font-bold">List of sections</h2>
-      <div className="overflow-auto">
+      <p className="text-xl font-bold mt-4 mb-0">List of Sections</p>
       <div className="overflow-auto px-2">
-        {sections.map(({ id, name, used, received, sent, expected }) => (
+        {sections.map(({ _id, name, totalSlots, products }) => (
           <div
-            key={id}
+            key={_id}
             className={`flex items-center justify-between p-4 rounded-xl cursor-pointer hover:bg-slate-100 ${
-              activeId === id ? 'bg-slate-200' : ''
+              activeId === _id ? 'bg-slate-200' : ''
             }`}
-            onClick={() => setActiveId(id)}
+            onClick={() => setActiveId(_id)}
           >
-            <div className="font-bold">{name}</div>
-            <div className="flex w-80 gap-4">
-              <div>Used</div>
-              <Progress percent={used} />
+            <div className="w-2/3 font-bold truncate">{name}</div>
+            <div className="w-80 px-4">
+              <Progress
+                percent={((products.length / totalSlots) * 100).toFixed(2)}
+              />
             </div>
-            <div>{received} received</div>
-            <div>{sent} sent</div>
-            <div>{expected} expected</div>
           </div>
         ))}
-      </div>
       </div>
     </>
   );

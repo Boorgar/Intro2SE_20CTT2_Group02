@@ -9,26 +9,21 @@ const navItems = [
   },
   {
     id: 1,
-    icon: 'uil:users-alt',
-    route: '/workers',
+    icon: 'uil:package',
+    route: '/storage',
   },
   {
     id: 2,
-    icon: 'uil:package',
-    route: '/sections',
-  },
-  {
-    id: 3,
     icon: 'uil:truck',
     route: '/orders',
   },
   {
-    id: 4,
+    id: 3,
     icon: 'uil:bell',
     route: '/notifications',
   },
   {
-    id: 5,
+    id: 4,
     icon: 'uil:setting',
     route: '/settings',
   },

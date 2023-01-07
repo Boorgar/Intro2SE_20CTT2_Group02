@@ -8,7 +8,11 @@ const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const storageRouter = require('./routes/storage');
-const productRouter = require('./routes/products');
+const productsRouter = require('./routes/products');
+const ordersRouter = require('./routes/orders');
+const workersRouter = require('./routes/workers');
+const customersRouter = require('./routes/customers');
+const suppliersRouter = require('./routes/suppliers');
 
 const dbo = require('./db/connection');
 dbo.connectToServer(function (err) {
@@ -31,7 +35,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/storage', storageRouter);
-app.use('/products', productRouter);
+app.use('/products', productsRouter);
+app.use('/orders', ordersRouter);
+app.use('/workers', workersRouter);
+app.use('/customers', customersRouter);
+app.use('/suppliers', suppliersRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

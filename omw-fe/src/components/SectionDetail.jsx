@@ -2,30 +2,18 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 
 const navItems = [
-  { id: 0, text: 'Received' },
-  { id: 1, text: 'Sent' },
-  { id: 2, text: 'Expected' },
+  { id: 0, text: 'New' },
+  { id: 1, text: 'Processing' },
+  { id: 2, text: 'Sent' },
 ];
 
-const items = {
-  received: [{ id: 2, time: '20:00' }],
-  sent: [
-    { id: 0, time: '20:00' },
-    { id: 1, time: '20:00' },
-    { id: 2, time: '20:00' },
-  ],
-  expected: [
-    { id: 0, time: '20:00' },
-    { id: 2, time: '20:00' },
-  ],
-};
-
-export default function Delivery() {
+export default function SectionDetail({ selectedSection, products }) {
   const [activeId, setActiveId] = useState(navItems[0].id);
   const activeNavItem = navItems.find(({ id }) => id === activeId);
+  const sectionProducts = selectedSection ? selectedSection.products : [];
   return (
     <>
-      <div className="flex gap-8">
+      <div className="flex gap-16 justify-center">
         {navItems.map(({ id, text }) => (
           <div
             key={id}
@@ -38,25 +26,29 @@ export default function Delivery() {
           </div>
         ))}
       </div>
-
-      {items[activeNavItem.text.toLowerCase()].map(({ id, time }) => (
-        <Item key={id} time={time} type={activeNavItem.text} />
-      ))}
+      {sectionProducts
+        .filter(({ status }) => status === activeNavItem.text)
+        .sort((a, b) => b.updatedAt - a.updatedAt)
+        .map(({ _id, updatedAt }, index) => (
+          <Item
+            key={index}
+            name={products.find((product) => product._id === _id)?.name}
+            updatedAt={updatedAt}
+          />
+        ))}
     </>
   );
 }
 
-function Item({ id, type, time }) {
+function Item({ name, updatedAt }) {
   return (
     <div className="my-4 flex gap-4">
       <div className="h-12 w-12 rounded-xl bg-slate-400 flex items-center justify-center">
         <Icon icon="uil:box" className="text-3xl text-white" />
       </div>
       <div className="flex flex-col justify-center">
-        <div className="font-bold">Box {id}</div>
-        <div className="text-sm">
-          {type} {time}
-        </div>
+        <div className="w-72 font-bold truncate">{name}</div>
+        <div className="text-sm">{new Date(updatedAt).toLocaleString()}</div>
       </div>
     </div>
   );

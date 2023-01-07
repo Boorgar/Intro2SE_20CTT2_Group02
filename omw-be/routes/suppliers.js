@@ -26,11 +26,11 @@ router.post('/', function (req, res) {
 router.get('/', function (req, res, next) {
   const dbConnect = dbo.getDb();
   dbConnect
-    .collection('storage')
+    .collection('suppliers')
     .find({})
     .toArray(function (err, result) {
       if (err) {
-        res.status(400).send('Error fetching storage!');
+        res.status(400).send('Error fetching suppliers!');
       } else {
         res.json(result);
       }
@@ -47,7 +47,7 @@ router.put('/:id', function (req, res) {
   };
 
   dbConnect
-    .collection('storage')
+    .collection('suppliers')
     .updateOne(listingQuery, updates, function (err, _result) {
       if (err) {
         res
@@ -64,7 +64,7 @@ router.delete('/:id', (req, res) => {
   const listingQuery = { listing_id: req.body.id };
 
   dbConnect
-    .collection('storage')
+    .collection('suppliers')
     .deleteOne(listingQuery, function (err, _result) {
       if (err) {
         res
